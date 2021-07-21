@@ -1,0 +1,59 @@
+{
+  "name": "Unimus",
+  "version": "dev",
+  "slug": "unimus",
+  "image": "ghcr.io/troykelly/unimus/{arch}",
+  "description": "Unimus makes network automation, disaster recovery, change management and configuration auditing painless and affordable for a network of any size.",
+  "url": "https://github.com/troykelly/hassio-addon-unimus",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "map": ["ssl:ro"],
+  "startup": "services",
+  "webui": "[PROTO:ssl]://[HOST]:[PORT:8085]/",
+  "panel_icon": "mdi:network",
+  "panel_title": "Unimus",
+  "ports": {
+    "5509/tcp": 5509,
+    "8085/tcp": 8085
+  },
+  "ports_description": {
+    "5509/tcp": "Core connection port",
+    "8085/tcp": "Web interface"
+  },
+  "tmpfs": true,
+  "options": {
+    "license": {
+      "key": "L-de52e814-386a-4d73-932b-24027a1296eb"
+    },
+    "encryption": {
+      "key": ""
+    },
+    "database": {
+      "host": "core-mariadb",
+      "port": "3306",
+      "name": "unimus",
+      "user": "unimus",
+      "password": "supersecret"
+    },
+    "ssl": false,
+    "certfile": "fullchain.pem",
+    "keyfile": "privkey.pem"
+  },
+  "schema": {
+    "license": {
+      "key": "str?"
+    },
+    "encryption": {
+      "key": "str?"
+    },
+    "database": {
+      "host": "str?",
+      "port": "port?",
+      "name": "str?",
+      "user": "str?",
+      "password": "str?"
+    },
+    "ssl": "bool",
+    "certfile": "str",
+    "keyfile": "str"
+  }
+}
